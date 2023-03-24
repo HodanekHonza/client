@@ -1,0 +1,44 @@
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    height: 5rem;
+    border-radius: 5px;
+  
+}
+
+.navigation input[type="text"] {
+    width: 100%;
+    height: 2.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 20px;
+    background-color: #f0f0f0;
+    transition: all 0.3s;
+  }
+  
+  .navigation input[type="text"]:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+  }
+  
+  .navigation input[type="text"]::placeholder {
+    color: #999;
+  }
+
+.Modal-button-open {
+    font-size: 30px;
+    color: blue;
+    cursor: pointer;
+}
+
+.logo {
+    font-size: 50px;
+    color: blue;
+
+}
