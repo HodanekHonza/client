@@ -19,9 +19,15 @@ function App() {
   }, []);
 
   const handleAddFavoriteVideo = (newVideo) => {
-    setFavoriteVideos([...favoriteVideos, newVideo]);
-    console.log("Added to favorites:", newVideo);
+    // zjištuji jestli video není již v oblíbených, abych nemohl přidat ten stejný znova
+    if (!favoriteVideos.some((video) => video.id === newVideo.id)) {
+      setFavoriteVideos([...favoriteVideos, newVideo]);
+      console.log("Přidán do oblíbených:", newVideo);
+    } else {
+      console.log("Video je již v oblíbených:", newVideo);
+    }
   };
+  
   
   const handleDeleteFavoriteVideo = (favoriteVideoToDelete) => {
     console.log("Deleting movie:", favoriteVideoToDelete);

@@ -2,7 +2,7 @@ import React from "react";
 import "../css/NavBar.css";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { AiFillVideoCamera } from "react-icons/ai";
-import { AiOutlineStar } from "react-icons/ai";
+import { SlMagnifier } from "react-icons/sl";
 import { AiFillStar } from "react-icons/ai";
 
 
@@ -16,28 +16,24 @@ const NavBar = ({ onSearch, onAddVideoClick, onAddFavoritesVideoClick }) => {
 
   return (
     <nav className={"navigation"}>
-      <div>
-        <AiFillVideoCamera className="logo"></AiFillVideoCamera>
-      </div>
-      <div>
-      <AiFillStar className="Modal-button-open"onClick={onAddFavoritesVideoClick}></AiFillStar>
-      </div>
-      {/* <button>
-       < AiOutlineStar/>
-      </button> */}
-      <div>
+        <div className="nav-items">
+          <div>
+            <AiFillVideoCamera className="logo"></AiFillVideoCamera>
+          </div>
+          <div className="search-container">
         <input
           type="text"
-          placeholder="Vyhledávejte jménem"
+          placeholder="Zadejte jméno videa"
           onChange={handleSearch}
-        />
+          />
+        <SlMagnifier className="search-icon"></SlMagnifier>
       </div>
-      <div>
-        <AiOutlinePlusCircle className="Modal-button-open"onClick={onAddVideoClick}></AiOutlinePlusCircle>
-    
-        
-      </div>
-    </nav>
+          <div>
+            <AiFillStar className="Modal-button-open"onClick={onAddFavoritesVideoClick}></AiFillStar>
+            <AiOutlinePlusCircle className="Modal-button-open"onClick={onAddVideoClick}></AiOutlinePlusCircle> 
+          </div>
+          </div>
+        </nav>
   );
 };
 

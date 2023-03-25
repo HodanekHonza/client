@@ -3,6 +3,11 @@ import "../css/FavoriteModalWindow.css";
 import { GiCancel } from "react-icons/gi";
 
 const FavoriteModalWindow = ({ showFavoriteVideo, onClose, deleteFavoriteVideo }) => {
+
+
+
+
+
   return (
     <div className="favorite-modal" onClick={onClose}>
       <div className="favorite-modal-content" onClick={(e) => e.stopPropagation()}>
@@ -21,7 +26,7 @@ const FavoriteModalWindow = ({ showFavoriteVideo, onClose, deleteFavoriteVideo }
               <button onClick={() => deleteFavoriteVideo(video)}>
               <GiCancel />
               </button>
-              <h1>{video.url}</h1>
+              <h1><a href={video.url}>{video.url}</a></h1>
               <h1>{video.name}</h1>
               <h2>{video.author}</h2>
               <h3>{video.length}</h3>

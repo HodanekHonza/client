@@ -1,17 +1,35 @@
 .navigation {
     display: flex;
-    justify-content: space-between;
+    justify-content:space-between;
     align-items: center;
     padding: 0 2rem;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     height: 5rem;
     border-radius: 5px;
-  
+    width: 100%; 
+}
+
+.nav-items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.action-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .navigation input[type="text"] {
-    width: 100%;
+    width: 300px;
     height: 2.5rem;
     padding: 0.5rem 1rem;
     font-size: 1rem;
@@ -19,6 +37,7 @@
     border-radius: 20px;
     background-color: #f0f0f0;
     transition: all 0.3s;
+
   }
   
   .navigation input[type="text"]:focus {
@@ -35,10 +54,35 @@
     font-size: 30px;
     color: blue;
     cursor: pointer;
+    margin-left: 15px;
 }
 
 .logo {
     font-size: 50px;
     color: blue;
 
+}
+
+.search-icon {
+  position: absolute;
+  right: 1rem;
+  font-size: 1.2rem;
+  color: #999;
+  cursor: pointer;
+}
+
+
+@media (max-width: 768px) {
+  .navigation {
+    padding: 0 1rem;
+  }
+
+  .nav-items {
+    flex-direction: column;
+  }
+
+  .navigation input[type="text"] {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
 }

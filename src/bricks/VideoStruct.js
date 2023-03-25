@@ -24,7 +24,7 @@ const VideoStruct = ({ movies, searchQuery, deleteMovie, addVideoFavorite }) => 
             <AiOutlineStar  />
             </button> 
             <a href={url} target="_blank" rel="noreferrer">
-              URL adressa, klikni zde
+              URL adressa
             </a>
             <p>Jméno videa: {name} </p>
             <p>Autor: {author} </p>
