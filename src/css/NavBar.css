@@ -72,10 +72,13 @@
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   .navigation {
     padding: 0 1rem;
+    box-shadow: none;
   }
+
+
 
   .nav-items {
     flex-direction: column;
