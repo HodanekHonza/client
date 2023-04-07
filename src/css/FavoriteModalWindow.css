@@ -1,35 +1,81 @@
-/* FavoriteModalWindow.css */
 .favorite-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  
-  .favorite-modal-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 4px;
-    max-width: 90%;
-    max-height: 90%;
-    overflow-y: auto;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .favorite-modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .favorite-modal-video {
-    margin-bottom: 20px;
-  }
-  
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.favorite-modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  max-width: 90%;
+  max-height: 90%;
+  overflow-y: auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 50%;
+}
+
+.favorite-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: rgba(165, 87, 95, 0.945);
+  border-radius: 4px;
+  padding: 10px;
+  color: #fff;
+}
+
+.favorite-modal-header h2 {
+  margin: 0;
+}
+
+.favorite-modal-header button {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.favorite-modal-header button:hover {
+  color: #f0c419;
+}
+
+.favorite-modal-video {
+  position: relative;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 2rem;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  width: 70%;
+}
+
+.cancel-button-wrapper {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.cancel-button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #f00;
+  cursor: pointer;
+}
+
+.cancel-button:hover {
+  color: #a00;
+}

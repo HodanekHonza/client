@@ -71,6 +71,9 @@ function App() {
 
   return (
     <div className="App">
+        <div className="background-video-container">
+        <video className="background-video" src="/background-video/lake-91562.mp4" autoPlay loop muted></video>
+      </div>
       <NavBar onSearch={setSearchQuery} onAddVideoClick={() => setShowModal(true)} onAddFavoritesVideoClick={() => setShowModalFavorites(true)} />
       {showModal && <ModalWindow onClose={() => setShowModal(false)} onAddVideo={handleAddVideo}/>}
       {showModalFavorites && <FavoriteModalWindow onClose={() => setShowModalFavorites(false)} showFavoriteVideo={favoriteVideos} deleteFavoriteVideo={handleDeleteFavoriteVideo}/>}

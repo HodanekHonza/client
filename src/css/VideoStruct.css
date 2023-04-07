@@ -7,12 +7,14 @@
   border: 1px solid #e0e0e0;
   margin: 15px;
   padding: 10px;
-  background-color: #ffffff;
+  background-color: rgba(165, 87, 95, 0.945);
   border-radius: 5px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.3s;
   position: relative;
   top: 0;
+  color: #fff;
+  border: none;
 }
 
 .one-video:hover {
@@ -28,10 +30,46 @@
   justify-content: center;
 }
 
-.cancel-icon {
-  color: red;
-  cursor: pointer;
+.one-video a {
+  color: #0066cc;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
 }
+
+.one-video p {
+  margin: 4px 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.one-video p strong {
+  font-weight: bold;
+}
+
+.cancel-icon {
+  background-color: #ff5b5b;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.cancel-icon:hover {
+  background-color: #ff3b3b;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cancel-icon svg {
+  margin-right: 5px;
+}
+
 
 .favorite-menu {
   position: absolute;
@@ -41,7 +79,11 @@
   color: #f0c419;
   cursor: pointer;
   transition: all 0.3s;
+  background-color: rgba(165, 87, 95, 0.945);
+  border-radius: 50%;
+  padding: 5px;
 }
+
 
 .favorite-menu:hover {
   color: #d4a515;
