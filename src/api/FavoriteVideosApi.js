@@ -12,7 +12,6 @@ const fetchFavoriteVideos = async () => {
 
   const addFavoriteVideo = async (videoData) => {
     try {
-        console.log("Data being sent:", videoData); 
       const response = await fetch("http://localhost:8000/favoritevideo/create", {
         method: "POST",
         headers: {
@@ -40,7 +39,7 @@ const fetchFavoriteVideos = async () => {
 
 const deleteFavoriteVideo = async (videoId) => {
     try {
-      const response = await fetch(`http://localhost:8000/favoritevideo/delete/${videoId}`, {
+      const response = await fetch(`http://localhost:8000/favoritevideo/delete/John/${videoId}`, {
         method: "DELETE",
       });
   

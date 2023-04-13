@@ -9,8 +9,7 @@ import "./App.css";
 import VideosApi from "./api/VideosApi";
 import FavoriteVideosApi from "./api/FavoriteVideosApi";
 
-// TODO 1. napojit na server, první simple GET na načtení videí, překopírovat mocking data do server "databáze"
-// TODO 2. dořešit s danem CSS, dát appce trochu života, žadnou bídu
+
  // TODO 3. přesunout handlery z app do child komponent abych uvolnil app.js file
  // TODO 4. přidat TOPICS jako PRE-SET, doposud mohl uživatel nastavit jakýkoli topic chtěl, odebereme mu totu funkci
 
@@ -22,9 +21,9 @@ function App() {
   const [showModal, setShowModal] = useState(false)
   //toggle pro modální okno -  oblíbené videa
   const [showModalFavorites, setShowModalFavorites] = useState(false)
-  // !!! tento stav zameni s videoLoadCall až zavolám server
+
   const [movies, setMovies] = useState([])
-    // !!! tento stav zameni s videoLoadCallFavorite? až zavolám server
+
   const [favoriteVideos, setFavoriteVideos] = useState([])
   //state pro načtení videí ze serveru a nasledovného podávaní komponentě video struct
 
@@ -34,14 +33,14 @@ function App() {
     const fetchMovies = async () => {
       const moviesData = await VideosApi.fetchVideos();
       setMovies(moviesData);
-      console.log(moviesData)
     };
     fetchMovies()
 
+
+    //volám poprvé abych načetl oblíbené videa, podruhé to dělam když přidám oblíbené video
     const fetchFavoriteMovies = async () => {
       const favoriteMoviesData = await FavoriteVideosApi.fetchFavoriteVideos();
       setFavoriteVideos(favoriteMoviesData);
-      console.log(favoriteMoviesData)
     };
     fetchFavoriteMovies()
   }, []);
@@ -50,16 +49,16 @@ function App() {
 
 
   const handleAddFavoriteVideo = async (newVideo) => {
-    // Check if the video is not already in the favorites to avoid adding the same video again
+    // zkontroluji zda neni video jiz v JSONU
     if (!favoriteVideos.some((video) => video.id === newVideo.id)) {
       try {
-        // Prepare the data with only the video id and creator's name
+        // objekt dat ktery budu posálat, jen id a jmenu uživatele stačí, backend podle id přiřadí data 
         const videoData = {
           videoId: newVideo.id,
-          name: 'John', // Replace with the actual creator name if it's available in newVideo
+          name: 'John', 
         };
   
-        // Add the new video to the favorites using the API
+        // přidání oblíbeného videa pomocí API 
         await FavoriteVideosApi.addFavoriteVideo(videoData);
   
         // Fetch the updated list of favorite videos
@@ -67,8 +66,6 @@ function App() {
         
         // Update the favoriteVideos state with the fetched data
         setFavoriteVideos(updatedFavoriteVideos);
-  
-        console.log("Added to favorites:", newVideo);
       } catch (error) {
         console.error("Error adding video to favorites:", error);
       }
@@ -79,10 +76,14 @@ function App() {
   
   
   //handler pro vymazání ze seznamu oblíbených videí 
-  const handleDeleteFavoriteVideo = (favoriteVideoToDelete) => {
-    console.log("Deleting movie:", favoriteVideoToDelete);
-    const updatedVideos = favoriteVideos.filter((movie) => movie.id !== favoriteVideoToDelete.id);
-    setFavoriteVideos(updatedVideos);
+  const handleDeleteFavoriteVideo = async (favoriteVideoToDelete) => {
+    try {
+      await FavoriteVideosApi.deleteFavoriteVideo(favoriteVideoToDelete.id); // Use the deleteVideo function from videoApi
+      const updatedVideos = favoriteVideos.filter((movie) => movie.id !== favoriteVideoToDelete.id);
+      setFavoriteVideos(updatedVideos);
+    } catch (error) {
+      console.error("Error deleting video:", error);
+    }
   }
 
 
@@ -106,7 +107,6 @@ const handleAddVideo = async (newVideo) => {
 
   //handler pro odstranění videa ze seznamu videí
   const handleDeleteVideo = async (videoToDelete) => {
-    console.log("Deleting video:", videoToDelete);
     try {
       await VideosApi.deleteVideo(videoToDelete.id); // Use the deleteVideo function from videoApi
       const updatedVideos = movies.filter((video) => video.id !== videoToDelete.id);
@@ -115,6 +115,8 @@ const handleAddVideo = async (newVideo) => {
       console.error("Error deleting video:", error);
     }
   };
+
+
 
   return (
     <div className="App">

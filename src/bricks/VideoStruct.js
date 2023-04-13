@@ -61,7 +61,6 @@ const VideoStruct = ({ movies, searchQuery, deleteMovie, addVideoFavorite }) => 
             <button
               className="cancel-icon"
               onClick={() => {
-                console.log("Clicked delete button for movie:", movie);
                 deleteMovie(movie);
               }}
             >
