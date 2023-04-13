@@ -24,7 +24,7 @@ const VideoStruct = ({ movies, searchQuery, deleteMovie, addVideoFavorite }) => 
   return (
     <div className="all-videos">
       {filteredMovies.map((movie) => {
-        const { id, url, name, author, length, dateofrelease, genre } = movie;
+        const { id, url, name, author, length, dateofrelease, genre, description } = movie;
         return (
           <div key={id} className="one-video">
             <button
@@ -51,6 +51,9 @@ const VideoStruct = ({ movies, searchQuery, deleteMovie, addVideoFavorite }) => 
             </p>
             <p>
               <strong>Datum vydání:</strong> {dateofrelease}
+            </p>
+            <p>
+              <strong>Popisek :</strong> {description}
             </p>
             <p>
               <strong>Témata:</strong> {genre}

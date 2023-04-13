@@ -6,8 +6,9 @@ const ModalWindow = ({ onClose, onAddVideo }) => {
     url: "",
     name: "",
     author: "",
-    length: "",
-    dateofrelease: "",
+    length: 0,
+    dateofrelease: 0,
+    description: "",
     genre: "",
   });
 
@@ -17,9 +18,15 @@ const ModalWindow = ({ onClose, onAddVideo }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onAddVideo(formData)
+    const data = {
+      ...formData,
+      length: parseInt(formData.length),
+      dateofrelease: parseInt(formData.dateofrelease),
+    };
+    onAddVideo(data);
     onClose();
   };
+  
 
   return (
     <div className="modal-background" onClick={onClose}>
@@ -27,44 +34,51 @@ const ModalWindow = ({ onClose, onAddVideo }) => {
         <button className="close-btn" onClick={onClose}>
           &times;
         </button>
-        <h2>Add Video</h2>
+        <h2>Přidat Video</h2>
         <form onSubmit={handleSubmit}>
-          <label>URL Address:</label>
+          <label>URL adresa:</label>
           <input
             type="text"
             name="url"
             value={formData.url}
             onChange={handleChange}
           />
-          <label>Name of the Video:</label>
+          <label>Jméno videa:</label>
           <input
             type="text"
             name="name"
             value={formData.name}
             onChange={handleChange}
           />
-          <label>Author:</label>
+          <label>Autor:</label>
           <input
             type="text"
             name="author"
             value={formData.author}
             onChange={handleChange}
           />
-          <label>Length:</label>
+          <label>Délka:</label>
           <input
-            type="text"
+            type="number"
             name="length"
             value={formData.length}
             onChange={handleChange}
           />
-          <label>Date of Release:</label>
+          <label>Datum vydání:</label>
           <input
-            type="text"
+            type="number"
             name="dateofrelease"
             value={formData.dateofrelease}
             onChange={handleChange}
           />
-          <label>Topics:</label>
+          <label>Popisek:</label>
+          <input
+            type="string"
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+          />
+          <label>Témata:</label>
           <input
             type="text"
             name="genre"
