@@ -29,8 +29,8 @@ const NavBar = ({ onSearch, onAddVideoClick, onAddFavoritesVideoClick }) => {
         <SlMagnifier className="search-icon"></SlMagnifier>
       </div>
           <div>
-            <AiFillStar className="Modal-button-open"onClick={onAddFavoritesVideoClick}></AiFillStar>
-            <AiOutlinePlusCircle className="Modal-button-open"onClick={onAddVideoClick}></AiOutlinePlusCircle> 
+            <a href="http://localhost:3001/favoritemodal"><AiFillStar className="Modal-button-open"></AiFillStar> </a>
+            <AiOutlinePlusCircle className="Modal-button-open"onClick={onAddVideoClick} ></AiOutlinePlusCircle> 
           </div>
           </div>
         </nav>
