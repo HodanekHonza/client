@@ -13,8 +13,21 @@ const ModalWindow = ({ onClose, onAddVideo }) => {
   });
 
   const handleChange = (event) => {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
+    const { name, value } = event.target;
+  
+    if (name === "url" && !value.startsWith("https://")) {
+      setFormData({
+        ...formData,
+        [name]: "https://" + value,
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
   };
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -34,58 +47,72 @@ const ModalWindow = ({ onClose, onAddVideo }) => {
         <button className="close-btn" onClick={onClose}>
           &times;
         </button>
-        <h2>Přidat Video</h2>
-        <form onSubmit={handleSubmit}>
-          <label>URL adresa:</label>
-          <input
-            type="text"
-            name="url"
-            value={formData.url}
-            onChange={handleChange}
-          />
-          <label>Jméno videa:</label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-          />
-          <label>Autor:</label>
-          <input
-            type="text"
-            name="author"
-            value={formData.author}
-            onChange={handleChange}
-          />
-          <label>Délka:</label>
-          <input
-            type="number"
-            name="length"
-            value={formData.length}
-            onChange={handleChange}
-          />
-          <label>Datum vydání:</label>
-          <input
-            type="number"
-            name="dateofrelease"
-            value={formData.dateofrelease}
-            onChange={handleChange}
-          />
-          <label>Popisek:</label>
-          <input
-            type="string"
-            name="description"
-            value={formData.description}
-            onChange={handleChange}
-          />
-          <label>Témata:</label>
-          <input
-            type="text"
-            name="genre"
-            value={formData.genre}
-            onChange={handleChange}
-          />
-          <button type="submit">Submit</button>
+         <h2>Přidat Video</h2>
+          <form onSubmit={handleSubmit}>
+              <label htmlFor="url">URL adresa:</label>
+              <input
+                type="text"
+                name="url"
+                placeholder="eg. youtube.com"
+                minlength="5"
+                maxlength="100"
+                value={formData.url}
+                onChange={handleChange}
+                required
+              />
+              <label htmlFor="name">Jméno videa:</label>
+              <input
+                type="text"
+                name="name"
+                minlength="1"
+                maxlength="100"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+              <label htmlFor="author">Autor:</label>
+              <input
+                type="text"
+                name="author"
+                minlength="1"
+                maxlength="100"
+                value={formData.author}
+                onChange={handleChange}
+              />
+            <label htmlFor="length">Délka:</label>
+            <input
+              type="number"
+              name="length"
+              value={formData.length}
+              onChange={handleChange}
+            />
+            <label htmlFor="dateofrelease">Datum vydání: eg. 14071999 </label>
+            <input
+              type="number"
+              name="dateofrelease"
+              value={formData.dateofrelease}
+              onChange={handleChange}
+            />
+            <label htmlFor="description">Popisek:</label>
+            <input
+              type="text"
+              name="description"
+              minlength="1"
+              maxlength="1000"
+              value={formData.description}
+              onChange={handleChange}
+            />
+            <label htmlFor="genre">Témata:</label>
+            <input
+              type="text"
+              name="genre"
+              minlength="1"
+              maxlength="100"
+              value={formData.genre}
+              onChange={handleChange}
+              required
+            />
+           <button type="submit">Submit</button>
         </form>
       </div>
     </div>
