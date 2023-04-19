@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
   }
   
 
@@ -15,7 +16,12 @@
     height: 100%;
     overflow: hidden;
     z-index: -1;
+    background-image: url('../public/background-image/1404.jpg');
+    background-size: cover; /* Changed from 'contain' to 'cover' */
+    background-repeat: no-repeat;
+    background-position: center;
   }
+  
   
   .background-video {
     position: fixed;

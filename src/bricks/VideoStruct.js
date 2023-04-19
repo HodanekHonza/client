@@ -1,8 +1,22 @@
 import "../css/VideoStruct.css";
-import { GiCancel } from "react-icons/gi";
+import { BsTrash } from "react-icons/bs";
 import { AiOutlineStar } from "react-icons/ai";
 import { AiFillStar } from "react-icons/ai";
+import { AiOutlineLink } from "react-icons/ai";
+import { BsFillFilePersonFill } from "react-icons/bs";
+import { FaPhotoVideo } from "react-icons/fa";
+import { BiTimeFive } from "react-icons/bi";
+import { BsCalendarDate } from "react-icons/bs";
+import { MdOutlineDescription } from "react-icons/md";
+import { MdOutlineTopic } from "react-icons/md";
+
+
+
+
+
 import { useState } from "react";
+
+
 
 
 const VideoStruct = ({ movies, searchQuery, deleteMovie, addVideoFavorite }) => {
@@ -38,25 +52,25 @@ const VideoStruct = ({ movies, searchQuery, deleteMovie, addVideoFavorite }) => 
       </button>
 
             <a href={url} target="_blank" rel="noreferrer">
-              URL adressa
+            <AiOutlineLink />  URL adressa
             </a>
-            <p>
-              <strong>Jméno videa:</strong> {name}
+            <p className="name-video">
+              <strong><FaPhotoVideo/>  Jméno videa:</strong> {name}
             </p>
             <p>
-              <strong>Autor:</strong> {author}
+              <strong><BsFillFilePersonFill/>  Autor:</strong> {author}
             </p>
             <p>
-              <strong>Délka:</strong> {length}
+              <strong><BiTimeFive/>  Délka:</strong> {length}
             </p>
             <p>
-              <strong>Datum vydání:</strong> {dateofrelease}
+              <strong><BsCalendarDate/>  Datum vydání:</strong> {dateofrelease}
             </p>
             <p>
-              <strong>Popisek :</strong> {description}
+              <strong><MdOutlineDescription/>  Popisek :</strong> {description}
             </p>
             <p>
-              <strong>Témata:</strong> {genre}
+              <strong><MdOutlineTopic/>  Témata:</strong> {genre}
             </p>
             <button
               className="cancel-icon"
@@ -64,7 +78,7 @@ const VideoStruct = ({ movies, searchQuery, deleteMovie, addVideoFavorite }) => 
                 deleteMovie(movie);
               }}
             >
-              <GiCancel />
+              <BsTrash />
               {"  "}Vymaž video
             </button>
           </div>

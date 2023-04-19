@@ -6,13 +6,12 @@ body {
     display: flex;
     justify-content:space-between;
     align-items: center;
-
     background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
     padding: 0.5rem 2rem; 
     border-radius: 5px;
-    width: 100%; 
-    background-color: rgba(165, 87, 95, 0.945);
+    width: 94%; 
+    background-color: transparent;
 }
 
 .nav-items {
@@ -22,6 +21,7 @@ body {
   width: 100%;
   padding-left: 10px;
   padding-right: 10px;
+ 
 }
 
 .action-buttons {
@@ -59,14 +59,15 @@ body {
 
 .Modal-button-open {
     font-size: 30px;
-    color: rgb(247, 246, 248);
+    color: #1252A6;;
     cursor: pointer;
     margin-left: 15px;
+    font-weight: bold;
 }
 
 .logo {
     font-size: 50px;
-    color: rgb(255, 255, 255);
+    color: white;
 
 }
 
@@ -98,5 +99,9 @@ a {
   .navigation input[type="text"] {
     width: 100%;
     margin-bottom: 1rem;
+  }
+
+  .logo {
+    color: #0066cc;
   }
 }

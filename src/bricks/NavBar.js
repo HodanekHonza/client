@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/NavBar.css";
 import { AiOutlinePlusCircle } from "react-icons/ai";
-import { AiFillVideoCamera } from "react-icons/ai";
+import { FaCameraRetro } from "react-icons/fa";
 import { SlMagnifier } from "react-icons/sl";
 import { AiFillStar } from "react-icons/ai";
 
@@ -18,7 +18,7 @@ const NavBar = ({ onSearch, onAddVideoClick, onAddFavoritesVideoClick }) => {
     <nav className={"navigation"}>
         <div className="nav-items">
           <div>
-            <AiFillVideoCamera className="logo"></AiFillVideoCamera>
+            <FaCameraRetro className="logo"></FaCameraRetro>
           </div>
           <div className="search-container">
         <input

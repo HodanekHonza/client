@@ -113,13 +113,6 @@ function App() {
           <Route path="/" element={
             <>
               <div className="background-video-container">
-                <video
-                  className="background-video"
-                  src="/background-video/lake-91562.mp4"
-                  autoPlay
-                  loop
-                  muted
-                ></video>
               </div>
               <NavBar
                 onSearch={setSearchQuery}
@@ -153,3 +146,5 @@ function App() {
 }
 
 export default App;
+
+
