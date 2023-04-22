@@ -10,9 +10,8 @@ import VideosApi from "./api/VideosApi";
 import FavoriteVideosApi from "./api/FavoriteVideosApi";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-  
- // TODO 3. přesunout handlery z app do child komponent abych uvolnil app.js file
- // TODO 4. přidat TOPICS jako PRE-SET, doposud mohl uživatel nastavit jakýkoli topic chtěl, odebereme mu totu funkci
+// TODO : import bootstrap datepicker, napojit a pořešit backend
+
 
 function App() {
 

@@ -1,5 +1,12 @@
 /* App.css */
 
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&display=swap');
+
+html {
+  font-family: 'Open Sans', sans-serif;
+}
+
+
 .App {
     display: flex;
     flex-direction: column;

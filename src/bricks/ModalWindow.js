@@ -1,3 +1,18 @@
+import { BsFillFilePersonFill } from "react-icons/bs";
+import { FaPhotoVideo } from "react-icons/fa";
+import { BiTimeFive } from "react-icons/bi";
+import { BsCalendarDate } from "react-icons/bs";
+import { MdOutlineDescription } from "react-icons/md";
+import { MdOutlineTopic } from "react-icons/md";
+import { BiLinkExternal } from "react-icons/bi";
+import { AiFillFolderAdd } from "react-icons/ai";
+import { FiSend } from "react-icons/fi";
+
+
+
+
+
+
 import React, { useState } from "react";
 import "../css/ModalWindow.css";
 
@@ -47,9 +62,9 @@ const ModalWindow = ({ onClose, onAddVideo }) => {
         <button className="close-btn" onClick={onClose}>
           &times;
         </button>
-         <h2>Přidat Video</h2>
+         <h2><AiFillFolderAdd/>  Přidat Video</h2>
           <form onSubmit={handleSubmit}>
-              <label htmlFor="url">URL adresa:</label>
+              <label htmlFor="url"><BiLinkExternal/>  URL adresa:</label>
               <input
                 type="text"
                 name="url"
@@ -60,7 +75,7 @@ const ModalWindow = ({ onClose, onAddVideo }) => {
                 onChange={handleChange}
                 required
               />
-              <label htmlFor="name">Jméno videa:</label>
+              <label htmlFor="name"><FaPhotoVideo/>  Jméno videa:</label>
               <input
                 type="text"
                 name="name"
@@ -70,7 +85,7 @@ const ModalWindow = ({ onClose, onAddVideo }) => {
                 onChange={handleChange}
                 required
               />
-              <label htmlFor="author">Autor:</label>
+              <label htmlFor="author"><BsFillFilePersonFill/>  Autor:</label>
               <input
                 type="text"
                 name="author"
@@ -79,21 +94,21 @@ const ModalWindow = ({ onClose, onAddVideo }) => {
                 value={formData.author}
                 onChange={handleChange}
               />
-            <label htmlFor="length">Délka:</label>
+            <label htmlFor="length"><BiTimeFive/>  Délka v minutách:</label>
             <input
               type="number"
               name="length"
               value={formData.length}
               onChange={handleChange}
             />
-            <label htmlFor="dateofrelease">Datum vydání: eg. 14071999 </label>
+            <label htmlFor="dateofrelease"><BsCalendarDate/>  Datum vydání: eg. 14071999 </label>
             <input
               type="number"
               name="dateofrelease"
               value={formData.dateofrelease}
               onChange={handleChange}
             />
-            <label htmlFor="description">Popisek:</label>
+            <label htmlFor="description"><MdOutlineDescription/>  Popisek:</label>
             <input
               type="text"
               name="description"
@@ -102,17 +117,22 @@ const ModalWindow = ({ onClose, onAddVideo }) => {
               value={formData.description}
               onChange={handleChange}
             />
-            <label htmlFor="genre">Témata:</label>
-            <input
-              type="text"
+           <label htmlFor="genre"><MdOutlineTopic/>  Téma:</label>
+            <select
               name="genre"
-              minlength="1"
-              maxlength="100"
               value={formData.genre}
               onChange={handleChange}
               required
-            />
-           <button type="submit">Submit</button>
+            >
+              <option value="">--Please choose an option--</option>
+              <option value="learning">Learning</option>
+              <option value="fun">Fun</option>
+              <option value="school">School</option>
+              <option value="work">Work</option>
+              <option value="something">Something</option>
+            </select>
+            
+           <button type="submit"><FiSend/>  Submit</button>
         </form>
       </div>
     </div>

@@ -21,7 +21,7 @@
 
 
 .one-video:hover {
-  background-color: rgba(249, 249, 249, 0.7);
+  background-color: rgba(249, 249, 249, 0.8);
   top: -5px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }

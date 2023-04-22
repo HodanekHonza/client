@@ -61,7 +61,7 @@ const VideoStruct = ({ movies, searchQuery, deleteMovie, addVideoFavorite }) => 
               <strong><BsFillFilePersonFill/>  Autor:</strong> {author}
             </p>
             <p>
-              <strong><BiTimeFive/>  Délka:</strong> {length}
+              <strong><BiTimeFive/>  Délka:</strong> {length} min
             </p>
             <p>
               <strong><BsCalendarDate/>  Datum vydání:</strong> {dateofrelease}

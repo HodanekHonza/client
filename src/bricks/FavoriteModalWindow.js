@@ -2,6 +2,16 @@ import React from "react";
 import "../css/FavoriteModalWindow.css";
 import { GiCancel } from "react-icons/gi";
 import { MdFavoriteBorder } from "react-icons/md";
+import { AiOutlineHome } from "react-icons/ai";
+import { BsFillFilePersonFill } from "react-icons/bs";
+import { FaPhotoVideo } from "react-icons/fa";
+import { BiTimeFive } from "react-icons/bi";
+import { BsCalendarDate } from "react-icons/bs";
+import { MdOutlineDescription } from "react-icons/md";
+import { MdOutlineTopic } from "react-icons/md";
+import { BiLinkExternal } from "react-icons/bi";
+
+
 import { Link } from "react-router-dom";
 
 
@@ -12,9 +22,9 @@ const FavoritesPage = ({ showFavoriteVideo, deleteFavoriteVideo }) => {
       <div className="background-video-container" />
       <div className="favorites-page">
         <div className="favorites-header">
-          <h2><MdFavoriteBorder/>   Favorites</h2>
+          <h2><MdFavoriteBorder/> </h2>
           <Link to="/" className="close-button">
-            x
+            <AiOutlineHome/> HOME
           </Link>
         </div>
         {showFavoriteVideo.map((video) => {
@@ -24,20 +34,23 @@ const FavoritesPage = ({ showFavoriteVideo, deleteFavoriteVideo }) => {
                 <button
                   className={"cancel-button"}
                   onClick={() => deleteFavoriteVideo(video)}
-                >
-                  <GiCancel />
+                > Vymaž oblíbené video   
+                    <span> </span><GiCancel />
                 </button>
               </div>
-              <h1>
-                <a href={video.url}>{video.url}</a>
+              <div className="url-link">
+
+              <h1 >
+                <a href={video.url}><BiLinkExternal/> URL videa</a>
               </h1>
-              <p><strong>Jméno videa: </strong> {video.name}</p>
-              <p>Autor: {video.author}</p>
-              <p>Délka: {video.length}</p>
-              <p>Datum vydání: {video.dateofrelease}</p>
-              <p>Popisek: {video.description}</p>
-              
-              <p>Téma: {video.genre}</p>
+
+              </div>
+              <p><strong><FaPhotoVideo/>   Jméno videa: </strong> {video.name}</p>
+              <p><BsFillFilePersonFill/> Autor: {video.author}</p>
+              <p><BiTimeFive/> Délka: {video.length}</p>
+              <p><BsCalendarDate/> Datum vydání: {video.dateofrelease}</p>
+              <p><MdOutlineDescription/> Popisek: {video.description}</p> 
+              <p><MdOutlineTopic/>  Téma: {video.genre}</p>
             </div>
           );
         })}

@@ -1,5 +1,5 @@
 h1 a {
-  color: black;
+  color: blue;
 }
 
 .App {
@@ -37,7 +37,7 @@ h1 a {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-  background-color: rgba(165, 87, 95, 0.945);
+  background-color: #287AF5;
   border-radius: 4px;
   padding: 10px;
   color: #fff;
@@ -64,7 +64,7 @@ h1 a {
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   padding: 0 2rem;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
