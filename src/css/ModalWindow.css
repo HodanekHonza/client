@@ -10,6 +10,7 @@
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1000;
   }
+
   
   .modal {
     background-color: white;
@@ -29,6 +30,14 @@
     font-size: 1.5rem;
     cursor: pointer;
   }
+
+  .react-calendar {
+    background: transparent;
+    color: black;
+    border: 1px solid black;
+  }
+  
+  
   
   form {
     display: flex;

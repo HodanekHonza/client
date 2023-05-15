@@ -22,6 +22,7 @@ const addVideo = async (videoData) => {
     });
 
     if (response.status === 400) {
+      console.log("error adding video with sa")
       throw new Error("Validation error");
     }
 

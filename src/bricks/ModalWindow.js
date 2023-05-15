@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import { BsFillFilePersonFill } from "react-icons/bs";
 import { FaPhotoVideo } from "react-icons/fa";
 import { BiTimeFive } from "react-icons/bi";
@@ -7,41 +8,48 @@ import { MdOutlineTopic } from "react-icons/md";
 import { BiLinkExternal } from "react-icons/bi";
 import { AiFillFolderAdd } from "react-icons/ai";
 import { FiSend } from "react-icons/fi";
-
-
-
-
-
-
-import React, { useState } from "react";
+import fetchTopics from "../api/TopicsApi";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import "../css/ModalWindow.css";
 
-const ModalWindow = ({ onClose, onAddVideo }) => {
+
+const ModalWindow = ({ onClose, onAddVideo, videos }) => {
   const [formData, setFormData] = useState({
     url: "",
     name: "",
     author: "",
     length: 0,
-    dateofrelease: 0,
+    dateofrelease: new Date(),
     description: "",
     genre: "",
   });
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-  
-    if (name === "url" && !value.startsWith("https://")) {
-      setFormData({
-        ...formData,
-        [name]: "https://" + value,
-      });
-    } else {
-      setFormData({
-        ...formData,
-        [name]: value,
-      });
+  const [topics, setTopics] = useState([]);
+
+  useEffect(() => {
+    const getTopics = async () => {
+      const fetchedTopics = await fetchTopics();
+      setTopics(fetchedTopics);
+    };
+
+    getTopics();
+  }, []);
+
+  const handleChange = (name, value) => {
+    // Check if 'name' is an object, which means it's the event object from a standard HTML input
+    if (typeof name === 'object' && name.target) {
+      const { target } = name;
+      value = target.name === "url" && !target.value.startsWith("https://") ? "https://" + target.value : target.value;
+      name = target.name;
     }
+    
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
+  
   
 
   const handleSubmit = (event) => {
@@ -49,11 +57,33 @@ const ModalWindow = ({ onClose, onAddVideo }) => {
     const data = {
       ...formData,
       length: parseInt(formData.length),
-      dateofrelease: parseInt(formData.dateofrelease),
+      dateofrelease: formData.dateofrelease.toISOString().split('T')[0],
     };
-    onAddVideo(data);
-    onClose();
+  
+    // check if a video with the same name or URL already exists
+    const duplicateName = videos.some(video => video.name === data.name);
+    const duplicateUrl = videos.some(video => video.url === data.url);
+  
+    if (!duplicateName && !duplicateUrl) {
+      onAddVideo(data);
+      onClose();
+    } else {
+      let errorMessage = 'Video se stejným';
+      if (duplicateName) {
+        errorMessage += ' názvem';
+      }
+      if (duplicateUrl) {
+        if (duplicateName) {
+          errorMessage += ' a';
+        }
+        errorMessage += ' URL';
+      }
+      errorMessage += ' již existuje!';
+      alert(errorMessage);      
+    }
   };
+  
+  
   
 
   return (
@@ -68,9 +98,9 @@ const ModalWindow = ({ onClose, onAddVideo }) => {
               <input
                 type="text"
                 name="url"
-                placeholder="eg. youtube.com"
-                minlength="5"
-                maxlength="100"
+                placeholder="např. youtube.com"
+                minLength="5"
+                maxLength="100"
                 value={formData.url}
                 onChange={handleChange}
                 required
@@ -79,8 +109,9 @@ const ModalWindow = ({ onClose, onAddVideo }) => {
               <input
                 type="text"
                 name="name"
-                minlength="1"
-                maxlength="100"
+                minLength="1"
+                maxLength="100"
+                placeholder="Defaultní jméno"
                 value={formData.name}
                 onChange={handleChange}
                 required
@@ -89,8 +120,9 @@ const ModalWindow = ({ onClose, onAddVideo }) => {
               <input
                 type="text"
                 name="author"
-                minlength="1"
-                maxlength="100"
+                minLength="1"
+                maxLength="100"
+                placeholder="Defaultní autor"
                 value={formData.author}
                 onChange={handleChange}
               />
@@ -101,36 +133,40 @@ const ModalWindow = ({ onClose, onAddVideo }) => {
               value={formData.length}
               onChange={handleChange}
             />
-            <label htmlFor="dateofrelease"><BsCalendarDate/>  Datum vydání: eg. 14071999 </label>
-            <input
-              type="number"
-              name="dateofrelease"
-              value={formData.dateofrelease}
-              onChange={handleChange}
-            />
             <label htmlFor="description"><MdOutlineDescription/>  Popisek:</label>
             <input
               type="text"
               name="description"
-              minlength="1"
-              maxlength="1000"
+              placeholder="Defaultní popisek"
+              minLength="10"
+              maxLength="1000"
               value={formData.description}
               onChange={handleChange}
-            />
-           <label htmlFor="genre"><MdOutlineTopic/>  Téma:</label>
-            <select
-              name="genre"
-              value={formData.genre}
-              onChange={handleChange}
               required
-            >
-              <option value="">--Please choose an option--</option>
-              <option value="learning">Learning</option>
-              <option value="fun">Fun</option>
-              <option value="school">School</option>
-              <option value="work">Work</option>
-              <option value="something">Something</option>
-            </select>
+            />
+              <label htmlFor="genre"><MdOutlineTopic/>  Téma:</label>
+              <select
+                name="genre"
+                value={formData.genre}
+                onChange={handleChange}
+                required
+              >
+                <option value="">--Please choose an option--</option>
+                {topics.map((topic) => (
+                  <option key={topic.id} value={topic.topic}>
+                    {topic.topic}
+                  </option>
+                ))}
+              </select>
+                <label htmlFor="dateofrelease"><BsCalendarDate/>  Datum vytvoření videa:</label>
+                <DatePicker
+                  selected={formData.dateofrelease}
+                  onChange={(date) => handleChange("dateofrelease", date)}
+                  dateFormat="dd/MM/yyyy"
+                  showMonthDropdown
+                  showYearDropdown
+                  dropdownMode="select"
+                />
             
            <button type="submit"><FiSend/>  Submit</button>
         </form>

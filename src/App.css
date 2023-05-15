@@ -1,46 +1,18 @@
-/* App.css */
-
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&display=swap');
-
-html {
-  font-family: 'Open Sans', sans-serif;
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* Updated to "stretch" */
+  min-height: 100vh; /* Added min-height to stretch the content */
 }
 
+.background-video-container {
+  flex: 1; /* Added flex: 1 to take remaining space */
+  background-image: url('../public/background-image/1404.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 
-.App {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-  }
-  
-
-  .background-video-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: -1;
-    background-image: url('../public/background-image/1404.jpg');
-    background-size: cover; /* Changed from 'contain' to 'cover' */
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-  
-  
-  .background-video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: auto;
-    height: 100%;
-    z-index: -1;
-
-    object-fit: cover;
-  }
-  
-
-  
-  
+.background-video {
+  display: none; /* Added to hide the background video */
+}

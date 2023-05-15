@@ -9,27 +9,24 @@ import { BiTimeFive } from "react-icons/bi";
 import { BsCalendarDate } from "react-icons/bs";
 import { MdOutlineDescription } from "react-icons/md";
 import { MdOutlineTopic } from "react-icons/md";
-
-
-
-
-
 import { useState } from "react";
 
-
-
-
-const VideoStruct = ({ movies, searchQuery, deleteMovie, addVideoFavorite }) => {
-
+const VideoStruct = ({ movies, favoriteVideos, searchQuery, deleteMovie, addVideoFavorite }) => {
   const [favoriteStatus, setFavoriteStatus] = useState({});
 
-  const toggleFavorite = (id) => {
+  const toggleFavorite = (id, movie) => {
+    if (favoriteVideos.find(video => video.id === id)) {
+      alert('Toto video je již v oblíbených');
+      return;
+    }
+    
     setFavoriteStatus((prevStatus) => ({
       ...prevStatus,
       [id]: !prevStatus[id],
     }));
+    
+    addVideoFavorite(movie);
   };
-  
 
   const filteredMovies = movies.filter((movie) =>
     movie.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -39,38 +36,37 @@ const VideoStruct = ({ movies, searchQuery, deleteMovie, addVideoFavorite }) => 
     <div className="all-videos">
       {filteredMovies.map((movie) => {
         const { id, url, name, author, length, dateofrelease, genre, description } = movie;
+        const isFavorite = favoriteStatus[id] || favoriteVideos.some(video => video.id === id);
+        
         return (
           <div key={id} className="one-video">
             <button
-                  className="favorite-menu"
-                  onClick={() => {
-                  toggleFavorite(id);
-                  addVideoFavorite(movie);
-        }}
-      >
-        {favoriteStatus[id] ? <AiFillStar /> : <AiOutlineStar />}
-      </button>
+              className="favorite-menu"
+              onClick={() => toggleFavorite(id, movie)}
+            >
+              {isFavorite ? <AiFillStar /> : <AiOutlineStar />}
+            </button>
 
             <a href={url} target="_blank" rel="noreferrer">
-            <AiOutlineLink />  URL adressa
+              <AiOutlineLink /> URL adresa
             </a>
             <p className="name-video">
-              <strong><FaPhotoVideo/>  Jméno videa:</strong> {name}
+              <strong><FaPhotoVideo/> Jméno videa:</strong> {name}
             </p>
             <p>
-              <strong><BsFillFilePersonFill/>  Autor:</strong> {author}
+              <strong><BsFillFilePersonFill/> Author:</strong> {author}
             </p>
             <p>
-              <strong><BiTimeFive/>  Délka:</strong> {length} min
+              <strong><BiTimeFive/> Délka v minutách:</strong> {length} min
             </p>
             <p>
-              <strong><BsCalendarDate/>  Datum vydání:</strong> {dateofrelease}
+              <strong><BsCalendarDate/> Datum vytvoření:</strong> {dateofrelease}
             </p>
             <p>
-              <strong><MdOutlineDescription/>  Popisek :</strong> {description}
+              <strong><MdOutlineDescription/> Popisek:</strong> {description}
             </p>
             <p>
-              <strong><MdOutlineTopic/>  Témata:</strong> {genre}
+              <strong><MdOutlineTopic/> Téma:</strong> {genre}
             </p>
             <button
               className="cancel-icon"
@@ -79,7 +75,7 @@ const VideoStruct = ({ movies, searchQuery, deleteMovie, addVideoFavorite }) => 
               }}
             >
               <BsTrash />
-              {"  "}Vymaž video
+              {"  "}Delete Video
             </button>
           </div>
         );

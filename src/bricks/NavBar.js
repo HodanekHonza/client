@@ -9,7 +9,7 @@ import { AiFillStar } from "react-icons/ai";
 
 
 
-const NavBar = ({ onSearch, onAddVideoClick, onAddFavoritesVideoClick }) => {
+const NavBar = ({ onSearch, onAddVideoClick }) => {
   const handleSearch = (e) => {
     onSearch(e.target.value);
   };
@@ -29,7 +29,7 @@ const NavBar = ({ onSearch, onAddVideoClick, onAddFavoritesVideoClick }) => {
         <SlMagnifier className="search-icon"></SlMagnifier>
       </div>
           <div>
-            <a href="http://localhost:3001/favoritemodal"><AiFillStar className="Modal-button-open"></AiFillStar> </a>
+            <a href="http://localhost:3000/favoritemodal"><AiFillStar className="Modal-button-open"></AiFillStar> </a>
             <AiOutlinePlusCircle className="Modal-button-open"onClick={onAddVideoClick} ></AiOutlinePlusCircle> 
           </div>
           </div>
