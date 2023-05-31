@@ -1,6 +1,6 @@
 const fetchFavoriteVideos = async () => {
     try {
-      const response = await fetch("http://localhost:8000/favoritevideo/list/John"); // Replace with your API endpoint
+      const response = await fetch("http://localhost:8000/favoritevideo/list/John"); 
       const moviesData = await response.json();
       return moviesData;
     } catch (error) {
@@ -66,7 +66,7 @@ const deleteFavoriteVideo = async (videoId) => {
     addFavoriteVideo,
     deleteFavoriteVideo,
 
-    // other functions
+
   };
   
   
