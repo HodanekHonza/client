@@ -1,5 +1,8 @@
 School Video Bookmarking App
 
+//TBF 1: topics/genre naming error, 
+       2: when sending the information about Video, need to load topics from server (done) but by id, not topic names.  
+
 This is a school project for a video bookmarking app that allows students to save and organize video information (URL, name, etc.) for later use and study. The app also provides the ability to favorite videos for quick access. The frontend is built using React.js, and the backend is powered by Node.js and Express.js.
 
 Features
