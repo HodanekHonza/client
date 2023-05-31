@@ -1,7 +1,7 @@
 // api/videosApi.js
 const fetchVideos = async () => {
   try {
-    const response = await fetch("http://localhost:8000/video/list"); // Replace with your API endpoint
+    const response = await fetch("http://localhost:8000/video/list"); 
     const moviesData = await response.json();
     return moviesData;
   } catch (error) {
@@ -65,7 +65,7 @@ const videoApi = {
   fetchVideos,
   addVideo,
   deleteVideo
-  // other functions
+
 };
 
 
