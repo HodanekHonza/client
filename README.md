@@ -10,6 +10,7 @@ Features
 Add, edit, and delete video information (URL, name, etc.)
 Favorite videos for quick access
 Search and filter saved videos
+User is set as const, wont include auth in this project 
 Responsive design for desktop and mobile devices
 Installation
 
