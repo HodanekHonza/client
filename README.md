@@ -1,5 +1,7 @@
 School Video Bookmarking App
 
+SERVER PART HERE: https://github.com/HodanekHonza/server
+
 //TBF 1: topics/genre naming error, 
        2: when sending the information about Video, need to load topics from server (done) but by id, not topic names.  
 
