@@ -28,3 +28,31 @@ Before running the application, make sure you have the following prerequisites i
 
 ```bash
 git clone https://github.com/your-username/school-video-bookmarking-app.git
+
+bash
+
+cd backend npm install Frontend
+
+bash
+
+cd frontend npm install Running the application
+
+Backend Navigate to the backend directory and start the server:
+
+bash
+
+cd backend npm start The server will be running on http://localhost:8000.
+
+Frontend Navigate to the frontend directory and start the React development server:
+
+bash
+
+cd frontend npm start The frontend will be accessible at http://localhost:3000.
+
+Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+License
+
+MIT
